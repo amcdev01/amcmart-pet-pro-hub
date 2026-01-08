@@ -1,13 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Layout from "@/components/layout/Layout";
+import HeroSection from "@/components/home/HeroSection";
+import AboutSection from "@/components/home/AboutSection";
+import CategoriesSection from "@/components/home/CategoriesSection";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import CTASection from "@/components/home/CTASection";
+import { COMPANY_INFO } from "@/lib/constants";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      {/* SEO Meta Tags */}
+      <title>AMC Mart - Veterinary Medical Equipment & Pet Solutions in Bangladesh</title>
+      <meta
+        name="description"
+        content="AMC Mart is Bangladesh's trusted distributor of Mindray veterinary medical equipment, pet accessories, and nutrition solutions. Expert support and quality products."
+      />
+      
+      <HeroSection />
+      <AboutSection />
+      <CategoriesSection />
+      <FeaturedProducts />
+      <CTASection />
+    </Layout>
   );
 };
 
