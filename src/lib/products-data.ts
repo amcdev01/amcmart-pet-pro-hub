@@ -1,4 +1,5 @@
 // Complete Product Catalog for AMC Mart
+// Product images sourced from official Mindray Animal Medical (mindrayanimal.com)
 
 export interface Product {
   id: string;
@@ -34,13 +35,102 @@ export interface Subcategory {
   description?: string;
 }
 
+// Official Mindray Animal Medical product images
+const MINDRAY_IMAGES = {
+  // Hematology Analyzers
+  "bc-60r-vet": "https://www.mindrayanimal.com/n0/m4s0jp/250612/904/jpg/hq7dpel2.jpg",
+  "bc-5000-vet": "https://www.mindrayanimal.com/n0/gflsvk/210713/144/jpg/ddv8qyge.jpg",
+  "bc-30-vet": "https://www.mindrayanimal.com/n0/eddcje/210713/174/jpg/8sxcujby.jpg",
+  "bc-20-vet": "https://www.mindrayanimal.com/n0/8el1aa/240923/760/jpg/9nd94otn.jpg",
+  
+  // Chemistry/Biochemistry Analyzers
+  "vetxpert-cube": "https://www.mindrayanimal.com/n0/konywt/240829/660/jpg/g97yxtye.jpg",
+  "vetxpert-c5": "https://www.mindrayanimal.com/n0/vrv9cd/240829/435/jpg/8cm6nbfo.jpg",
+  "bs-240-vet": "https://www.mindrayanimal.com/n0/lzklvj/231128/463/jpg/dd0ddtni.jpg",
+  
+  // Immunology Analyzer
+  "vetxpert-i3i5": "https://www.mindrayanimal.com/n0/d7f1z6/240829/243/jpg/049ifblr.jpg",
+  
+  // Urine Analyzer
+  "ua-60v": "https://www.mindrayanimal.com/n0/x2uqff/220613/152/jpg/pfbdluxl.jpg",
+  
+  // Ultrasound - Cart Based
+  "vetus-9": "https://www.mindrayanimal.com/n0/zeyqf1/220921/732/jpg/ram9c4at.jpg",
+  "vetus-80": "https://www.mindrayanimal.com/n0/4xplhp/240829/267/jpg/lgzjmocb.jpg",
+  "vetus-8": "https://www.mindrayanimal.com/n0/ey98cy/210713/528/jpg/1bv5yssm.jpg",
+  "vetus-7": "https://www.mindrayanimal.com/n0/begmh7/210713/204/jpg/an0wivg8.jpg",
+  "vetus-50": "https://www.mindrayanimal.com/n0/tdwlk3/231108/324/jpg/ik4a8dni.jpg",
+  "vetus-5-exp": "https://www.mindrayanimal.com/n0/sml1tm/210713/788/jpg/muuaw35u.jpg",
+  "vetus-5": "https://www.mindrayanimal.com/n0/g2nspd/210713/141/jpg/ebaags6g.jpg",
+  
+  // Ultrasound - Portable
+  "vetus-e7": "https://www.mindrayanimal.com/n0/xw1qwn/211221/337/jpg/pxvmddmc.jpg",
+  "vetus-eq": "https://www.mindrayanimal.com/n0/ss5ixf/230614/1/jpg/ljjv9ptt.jpg",
+  "vetus-nova": "https://www.mindrayanimal.com/n0/qrajej/241105/933/jpg/sgqgaeen.jpg",
+  "te5-vet": "https://www.mindrayanimal.com/n0/13wnm4/211105/280/jpg/5jtrfrrt.jpg",
+  "z60-vet": "https://www.mindrayanimal.com/n0/xqccfb/210713/838/jpg/ffsooiqj.jpg",
+  "dp-50-vet": "https://www.mindrayanimal.com/n0/fj1don/210713/463/jpg/fxe1fmk5.jpg",
+  "dp-30-vet": "https://www.mindrayanimal.com/n0/u4nw5h/210713/667/jpg/qalez97m.jpg",
+  "dp-10-vet": "https://www.mindrayanimal.com/n0/gyubws/210713/700/jpg/sjdbwug1.jpg",
+  
+  // Anesthesia Machines
+  "wato-ex-65-pro-vet": "https://www.mindrayanimal.com/n0/ostgmk/250612/314/jpg/ne04ybbg.jpg",
+  "wato-ex-35-vet": "https://www.mindrayanimal.com/n0/krutvq/210714/965/jpg/uyeje7qs.jpg",
+  "wato-ex-20-vet": "https://www.mindrayanimal.com/n0/zmmwjo/210714/474/jpg/wkkg4w6h.jpg",
+  "veta-5-plus": "https://www.mindrayanimal.com/n0/b2nra7/241107/192/jpg/1ys3ux3b.jpg",
+  "veta-5": "https://www.mindrayanimal.com/n0/d42ho0/210714/444/jpg/yyj3zwta.jpg",
+  "veta-3": "https://www.mindrayanimal.com/n0/d42ho0/210714/444/jpg/yyj3zwta.jpg",
+  "veta-3x": "https://www.mindrayanimal.com/n0/qykita/240923/452/jpg/fg0jheqr.jpg",
+  
+  // Patient Monitoring
+  "epm-12m-vet": "https://www.mindrayanimal.com/n0/edsehs/210713/451/jpg/bdwkzden.jpg",
+  "pm60-vet": "https://www.mindrayanimal.com/n0/tj6sjo/210713/465/jpg/hrg140zt.jpg",
+  "umed20-vet": "https://www.mindrayanimal.com/n0/jex07b/251103/443/jpg/iscrzzjp.jpg",
+  "vetal-3": "https://www.mindrayanimal.com/n0/i0rwzk/240923/742/jpg/bzpl99ol.jpg",
+  "vetinet-cms": "https://www.mindrayanimal.com/n0/nnimue/250708/371/jpg/80cnhgbz.jpg",
+  
+  // Infusion Pumps
+  "benefusion-esp-evp-eds-vet": "https://www.mindrayanimal.com/n0/v2wdht/220705/354/jpg/eqd4ubbj.jpg",
+  "benefusion-sp1-vet": "https://www.mindrayanimal.com/n0/pxll5m/220815/929/jpg/pqpdc6ee.jpg",
+  "anifm-i3-s3": "https://www.mindrayanimal.com/n0/e3qh6p/251112/893/jpg/ygukabwm.jpg",
+  "anifm-i1": "https://www.mindrayanimal.com/n0/gq4kiz/240923/49/jpg/pra9ljfv.jpg",
+  
+  // Telemetry
+  "tms30-vet": "https://www.mindrayanimal.com/n0/blrvvx/250612/36/jpg/xahun6cc.jpg",
+  
+  // Ventilator
+  "sv300-vet": "https://www.mindrayanimal.com/n0/mngpfw/250708/378/jpg/mtnqklyk.jpg",
+  
+  // Other Equipment
+  "hyport-p20-30-vet": "https://www.mindrayanimal.com/n0/cnxs3o/240814/996/jpg/lbf1zdel.jpg",
+  
+  // Endoscopy
+  "vetina-cs7": "https://www.mindrayanimal.com/n0/f9bjev/210830/100/jpg/9xo4zgxc.jpg",
+  "vetina-cs3": "https://www.mindrayanimal.com/n0/mx9ubb/210901/361/jpg/95vhanyu.jpg",
+  "vetina-es3": "https://www.mindrayanimal.com/n0/lw6tda/210901/951/jpg/bhzbyk6m.jpg",
+  
+  // X-Ray / Digital Radiography
+  "vetix-s300": "https://www.mindrayanimal.com/n0/8i2utg/231213/799/jpg/fjnpggub.jpg",
+  "vetix-p8": "https://www.mindrayanimal.com/n0/3f6ks4/220113/298/jpg/hzsxxqj3.jpg",
+  
+  // Surgical Lights
+  "hyled-c50-vet": "https://www.mindrayanimal.com/n0/ldvimy/250612/483/jpg/u03z6jns.jpg",
+  "veled-series": "https://www.mindrayanimal.com/n0/ruu15t/250627/966/jpg/yrj4vmh5.jpg",
+  
+  // Category images
+  "category-lab": "https://www.mindrayanimal.com/n0/konywt/240829/660/jpg/g97yxtye.jpg",
+  "category-life-support": "https://www.mindrayanimal.com/n0/ostgmk/250612/314/jpg/ne04ybbg.jpg",
+  "category-imaging": "https://www.mindrayanimal.com/n0/zeyqf1/220921/732/jpg/ram9c4at.jpg",
+  "category-radiology": "https://www.mindrayanimal.com/n0/8i2utg/231213/799/jpg/fjnpggub.jpg",
+};
+
 export const categories: Category[] = [
   {
     id: "lab-equipment",
     name: "Laboratory Equipment",
     slug: "laboratory-equipment",
     description: "Advanced diagnostic laboratory equipment for veterinary practices",
-    imageUrl: "https://images.unsplash.com/photo-1582719471384-894fbb16f0ce?w=800",
+    imageUrl: MINDRAY_IMAGES["category-lab"],
     subcategories: [
       { id: "one-lab", name: "One Lab Analyzer", slug: "one-lab-analyzer" },
       { id: "biochemistry", name: "Biochemistry Analyzer", slug: "biochemistry-analyzer" },
@@ -54,7 +144,7 @@ export const categories: Category[] = [
     name: "Life Support and Monitoring Equipment",
     slug: "life-support-monitoring",
     description: "Critical care and patient monitoring solutions",
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["category-life-support"],
     subcategories: [
       { id: "cms", name: "Central Monitoring System", slug: "central-monitoring" },
       { id: "anesthesia", name: "Anesthesia Machines", slug: "anesthesia-machines" },
@@ -71,7 +161,7 @@ export const categories: Category[] = [
     name: "Medical Imaging Equipment",
     slug: "medical-imaging",
     description: "Advanced imaging solutions for accurate diagnostics",
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["category-imaging"],
     subcategories: [
       { id: "ultrasound-cart", name: "Ultrasound Machine - Cart Based", slug: "ultrasound-cart" },
       { id: "ultrasound-portable", name: "Ultrasound Machine - Portable", slug: "ultrasound-portable" },
@@ -84,7 +174,7 @@ export const categories: Category[] = [
     name: "Radiology Equipment",
     slug: "radiology-equipment",
     description: "Digital radiography systems for veterinary imaging",
-    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
+    imageUrl: MINDRAY_IMAGES["category-radiology"],
     subcategories: [
       { id: "xray", name: "X-Ray Machine", slug: "x-ray-machine" },
       { id: "dental-xray", name: "Dental X-Ray", slug: "dental-x-ray" },
@@ -106,7 +196,7 @@ export const categories: Category[] = [
     name: "Surgical Equipment",
     slug: "surgical-equipment",
     description: "Professional surgical equipment and lighting",
-    imageUrl: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800",
+    imageUrl: MINDRAY_IMAGES["hyled-c50-vet"],
     subcategories: [
       { id: "surgical-lights", name: "Surgical Lights", slug: "surgical-lights" },
     ],
@@ -116,7 +206,7 @@ export const categories: Category[] = [
     name: "Vet Medical Equipment & Solution",
     slug: "vet-medical-equipment",
     description: "Comprehensive veterinary medical solutions",
-    imageUrl: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=800",
+    imageUrl: MINDRAY_IMAGES["epm-12m-vet"],
   },
   {
     id: "pet-accessories",
@@ -151,7 +241,7 @@ export const products: Product[] = [
       "Low sample volume requirements",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1582719471384-894fbb16f0ce?w=800",
+    imageUrl: MINDRAY_IMAGES["vetxpert-cube"],
     isFeatured: true,
   },
   // Biochemistry Analyzers
@@ -171,7 +261,7 @@ export const products: Product[] = [
       "Built-in quality control",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine", "Swine", "Avian"],
-    imageUrl: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?w=800",
+    imageUrl: MINDRAY_IMAGES["vetxpert-c5"],
     isFeatured: true,
   },
   {
@@ -190,7 +280,7 @@ export const products: Product[] = [
       "Comprehensive veterinary test panel",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1582719471384-894fbb16f0ce?w=800",
+    imageUrl: MINDRAY_IMAGES["bs-240-vet"],
   },
   // Hematology Analyzers
   {
@@ -201,15 +291,15 @@ export const products: Product[] = [
     categorySlug: "laboratory-equipment",
     subcategory: "Hematology Analyzer",
     subcategorySlug: "hematology-analyzer",
-    shortDescription: "5-part differential hematology analyzer with reticulocyte counting",
+    shortDescription: "6-part differential hematology analyzer with reticulocyte counting",
     keyFeatures: [
-      "5-part differential analysis",
+      "6-part differential analysis",
       "Reticulocyte counting capability",
       "Up to 60 samples per hour",
       "Species-specific analysis modes",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?w=800",
+    imageUrl: MINDRAY_IMAGES["bc-60r-vet"],
     isFeatured: true,
   },
   {
@@ -228,7 +318,7 @@ export const products: Product[] = [
       "Advanced data management",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1582719471384-894fbb16f0ce?w=800",
+    imageUrl: MINDRAY_IMAGES["bc-5000-vet"],
   },
   {
     id: "bc-30-vet",
@@ -246,7 +336,7 @@ export const products: Product[] = [
       "Easy maintenance",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?w=800",
+    imageUrl: MINDRAY_IMAGES["bc-30-vet"],
   },
   {
     id: "bc-20-vet",
@@ -264,7 +354,7 @@ export const products: Product[] = [
       "Simple operation",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1582719471384-894fbb16f0ce?w=800",
+    imageUrl: MINDRAY_IMAGES["bc-20-vet"],
   },
   // Immunology Analyzer
   {
@@ -283,7 +373,7 @@ export const products: Product[] = [
       "Easy-to-use interface",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?w=800",
+    imageUrl: MINDRAY_IMAGES["vetxpert-i3i5"],
   },
   // Urine Analyzer
   {
@@ -302,7 +392,7 @@ export const products: Product[] = [
       "Veterinary-specific calibration",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1582719471384-894fbb16f0ce?w=800",
+    imageUrl: MINDRAY_IMAGES["ua-60v"],
   },
   // Life Support - Central Monitoring
   {
@@ -320,7 +410,7 @@ export const products: Product[] = [
       "Alert and alarm management",
       "Network integration",
     ],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["vetinet-cms"],
     isFeatured: true,
   },
   // Anesthesia Machines
@@ -340,7 +430,7 @@ export const products: Product[] = [
       "Comprehensive safety features",
     ],
     speciesSupported: ["Small animals", "Large animals", "Equine"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["wato-ex-65-pro-vet"],
     isFeatured: true,
   },
   {
@@ -359,7 +449,7 @@ export const products: Product[] = [
       "Reliable gas delivery",
     ],
     speciesSupported: ["Dog", "Cat", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["wato-ex-35-vet"],
   },
   {
     id: "wato-ex-20-vet",
@@ -377,7 +467,7 @@ export const products: Product[] = [
       "Easy operation",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["wato-ex-20-vet"],
   },
   {
     id: "veta-5-plus",
@@ -395,7 +485,7 @@ export const products: Product[] = [
       "Battery backup option",
     ],
     speciesSupported: ["Dog", "Cat", "Small mammals", "Exotic"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["veta-5-plus"],
   },
   {
     id: "veta-5",
@@ -413,7 +503,7 @@ export const products: Product[] = [
       "Consistent performance",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["veta-5"],
   },
   {
     id: "veta-3",
@@ -431,7 +521,7 @@ export const products: Product[] = [
       "Affordable solution",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["veta-3"],
   },
   {
     id: "veta-3x",
@@ -449,7 +539,7 @@ export const products: Product[] = [
       "Enhanced reliability",
     ],
     speciesSupported: ["Dog", "Cat", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["veta-3x"],
   },
   // Patient Monitoring
   {
@@ -468,7 +558,7 @@ export const products: Product[] = [
       "Network connectivity",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["epm-12m-vet"],
     isFeatured: true,
   },
   {
@@ -487,7 +577,7 @@ export const products: Product[] = [
       "Long battery life",
     ],
     speciesSupported: ["Dog", "Cat", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["pm60-vet"],
   },
   {
     id: "umed20-vet",
@@ -505,7 +595,7 @@ export const products: Product[] = [
       "Quick setup",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["umed20-vet"],
   },
   {
     id: "vetal-3",
@@ -523,7 +613,7 @@ export const products: Product[] = [
       "Reliable performance",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["vetal-3"],
   },
   // Infusion Pumps
   {
@@ -542,7 +632,7 @@ export const products: Product[] = [
       "Dose error reduction system",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["benefusion-esp-evp-eds-vet"],
   },
   {
     id: "benefusion-sp1-vet",
@@ -560,7 +650,7 @@ export const products: Product[] = [
       "Alarm system",
     ],
     speciesSupported: ["Dog", "Cat", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["benefusion-sp1-vet"],
   },
   {
     id: "anifm-i3-s3",
@@ -578,7 +668,7 @@ export const products: Product[] = [
       "Intuitive operation",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["anifm-i3-s3"],
   },
   {
     id: "anifm-i1",
@@ -596,7 +686,7 @@ export const products: Product[] = [
       "Cost-effective",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["anifm-i1"],
   },
   // Incubator
   {
@@ -615,7 +705,7 @@ export const products: Product[] = [
       "Easy cleaning and maintenance",
     ],
     speciesSupported: ["Puppies", "Kittens", "Small mammals", "Birds"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["epm-12m-vet"], // Using similar equipment image
   },
   // Ventilator
   {
@@ -634,7 +724,7 @@ export const products: Product[] = [
       "Species-specific settings",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["sv300-vet"],
   },
   // Telemetry
   {
@@ -653,7 +743,7 @@ export const products: Product[] = [
       "Central station integration",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["tms30-vet"],
   },
   // Other Life Support
   {
@@ -672,7 +762,7 @@ export const products: Product[] = [
       "Emergency ready",
     ],
     speciesSupported: ["Dog", "Cat", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800",
+    imageUrl: MINDRAY_IMAGES["hyport-p20-30-vet"],
   },
   // Ultrasound - Cart Based
   {
@@ -691,7 +781,7 @@ export const products: Product[] = [
       "Comprehensive measurement package",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine", "Exotic"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-9"],
     isFeatured: true,
   },
   {
@@ -710,7 +800,7 @@ export const products: Product[] = [
       "Ergonomic cart design",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-80"],
   },
   {
     id: "vetus-8",
@@ -728,7 +818,7 @@ export const products: Product[] = [
       "Network connectivity",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-8"],
   },
   {
     id: "vetus-7",
@@ -746,7 +836,7 @@ export const products: Product[] = [
       "Easy maintenance",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-7"],
   },
   // Ultrasound - Portable
   {
@@ -765,7 +855,7 @@ export const products: Product[] = [
       "Multiple probe options",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-50"],
   },
   {
     id: "vetus-5",
@@ -783,7 +873,7 @@ export const products: Product[] = [
       "Rugged construction",
     ],
     speciesSupported: ["Dog", "Cat", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-5"],
   },
   {
     id: "vetus-5-exp",
@@ -801,7 +891,7 @@ export const products: Product[] = [
       "Extended probe compatibility",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-5-exp"],
   },
   {
     id: "vetus-nova",
@@ -819,7 +909,7 @@ export const products: Product[] = [
       "Cloud connectivity",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine", "Exotic"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-nova"],
     isFeatured: true,
   },
   {
@@ -838,7 +928,7 @@ export const products: Product[] = [
       "Essential features",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-e7"],
   },
   {
     id: "vetus-eq",
@@ -856,7 +946,7 @@ export const products: Product[] = [
       "Extended battery life",
     ],
     speciesSupported: ["Horse", "Large animals"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetus-eq"],
   },
   {
     id: "te5-vet",
@@ -874,7 +964,7 @@ export const products: Product[] = [
       "Cloud backup",
     ],
     speciesSupported: ["Dog", "Cat", "Small mammals"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["te5-vet"],
   },
   {
     id: "z60-vet",
@@ -892,7 +982,7 @@ export const products: Product[] = [
       "Multi-species support",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["z60-vet"],
   },
   {
     id: "dp-50-vet",
@@ -910,7 +1000,7 @@ export const products: Product[] = [
       "Affordable pricing",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["dp-50-vet"],
   },
   {
     id: "dp-30-vet",
@@ -928,7 +1018,7 @@ export const products: Product[] = [
       "Budget-friendly",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["dp-30-vet"],
   },
   {
     id: "dp-10-vet",
@@ -946,7 +1036,7 @@ export const products: Product[] = [
       "Simple operation",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["dp-10-vet"],
   },
   // Endoscopy - Rigid
   {
@@ -965,7 +1055,7 @@ export const products: Product[] = [
       "Ergonomic design",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetina-cs7"],
   },
   {
     id: "vetina-cs3",
@@ -983,7 +1073,7 @@ export const products: Product[] = [
       "Easy maintenance",
     ],
     speciesSupported: ["Dog", "Cat"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetina-cs3"],
   },
   // Endoscopy - Flexible
   {
@@ -1002,12 +1092,12 @@ export const products: Product[] = [
       "Biopsy capability",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+    imageUrl: MINDRAY_IMAGES["vetina-es3"],
   },
   // X-Ray
   {
     id: "digital-dr-vet",
-    name: "Digital DR Veterinary System",
+    name: "VetiX S300",
     slug: "digital-dr-vet",
     category: "Radiology Equipment",
     categorySlug: "radiology-equipment",
@@ -1021,12 +1111,12 @@ export const products: Product[] = [
       "DICOM compatible",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine", "Exotic"],
-    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
+    imageUrl: MINDRAY_IMAGES["vetix-s300"],
     isFeatured: true,
   },
   {
     id: "portable-xray-vet",
-    name: "Portable Veterinary X-Ray",
+    name: "VetiX P8",
     slug: "portable-xray-vet",
     category: "Radiology Equipment",
     categorySlug: "radiology-equipment",
@@ -1040,7 +1130,7 @@ export const products: Product[] = [
       "Easy transport",
     ],
     speciesSupported: ["Dog", "Cat", "Horse", "Bovine"],
-    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
+    imageUrl: MINDRAY_IMAGES["vetix-p8"],
   },
   // Dental X-Ray
   {
@@ -1059,7 +1149,7 @@ export const products: Product[] = [
       "Compact design",
     ],
     speciesSupported: ["Dog", "Cat", "Horse"],
-    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
+    imageUrl: MINDRAY_IMAGES["vetix-p8"], // Using portable X-ray image as similar
   },
   // Laboratory Reagent
   {
@@ -1101,7 +1191,7 @@ export const products: Product[] = [
   // Surgical Lights
   {
     id: "led-surgical-light",
-    name: "LED Surgical Light System",
+    name: "HyLED C50 Vet",
     slug: "led-surgical-light",
     category: "Surgical Equipment",
     categorySlug: "surgical-equipment",
@@ -1114,7 +1204,24 @@ export const products: Product[] = [
       "Shadow reduction",
       "Long lifespan",
     ],
-    imageUrl: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800",
+    imageUrl: MINDRAY_IMAGES["hyled-c50-vet"],
+  },
+  {
+    id: "veled-surgical-light",
+    name: "VeLED Series",
+    slug: "veled-surgical-light",
+    category: "Surgical Equipment",
+    categorySlug: "surgical-equipment",
+    subcategory: "Surgical Lights",
+    subcategorySlug: "surgical-lights",
+    shortDescription: "Versatile LED surgical lighting system for various procedures",
+    keyFeatures: [
+      "Multiple light head options",
+      "Adjustable color temperature",
+      "Easy positioning",
+      "Energy efficient",
+    ],
+    imageUrl: MINDRAY_IMAGES["veled-series"],
   },
   // Pet Accessories
   {
