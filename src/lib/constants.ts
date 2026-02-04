@@ -12,6 +12,30 @@ export const COMPANY_INFO = {
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.8888888888!2d90.4180000000000!3d23.8100000000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ4JzM2LjAiTiA5MMKwMjUnMDQuOCJF!5e0!3m2!1sen!2sbd!4v1600000000000!5m2!1sen!2sbd",
 };
 
+// Payment Information for bKash and Nagad
+export const PAYMENT_INFO = {
+  bkash: {
+    name: "bKash",
+    number: "01XXX-XXXXXX", // Replace with actual bKash merchant number
+    type: "Merchant", // or "Personal"
+    instructions: "Send money to this bKash number and include your Quote ID in the reference.",
+  },
+  nagad: {
+    name: "Nagad",
+    number: "01XXX-XXXXXX", // Replace with actual Nagad merchant number
+    type: "Merchant", // or "Personal"
+    instructions: "Send money to this Nagad number and include your Quote ID in the reference.",
+  },
+  bankTransfer: {
+    bankName: "Your Bank Name",
+    accountName: "AMC Mart",
+    accountNumber: "XXXXXXXXXXXX",
+    branchName: "Branch Name",
+    routingNumber: "XXXXXXXXX",
+  },
+  paymentNote: "After making payment, please share the transaction ID via WhatsApp or email for verification.",
+};
+
 export const MISSION_VISION = {
   mission: "To provide exceptional veterinary medical solutions and pet care products that enhance animal health and well-being, while supporting veterinary professionals with cutting-edge technology and reliable customer service.",
   vision: "To become the leading distributor of veterinary medical equipment and pet care solutions in Bangladesh, recognized for our commitment to quality, innovation, and customer satisfaction.",

@@ -1,8 +1,9 @@
-import { useSearchParams } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useSearchParams, Link } from "react-router-dom";
+import { MapPin, Phone, Mail, Clock, CreditCard } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ContactForm from "@/components/contact/ContactForm";
+import { Button } from "@/components/ui/button";
 import { COMPANY_INFO } from "@/lib/constants";
 
 const Contact = () => {
@@ -84,6 +85,16 @@ const Contact = () => {
                       9:00 AM - 6:00 PM
                     </p>
                   </div>
+                </div>
+
+                {/* Payment Info Link */}
+                <div className="pt-4 border-t border-border">
+                  <Button asChild className="w-full" variant="outline">
+                    <Link to="/payment">
+                      <CreditCard className="mr-2 h-4 w-4" />
+                      View Payment Options
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>
