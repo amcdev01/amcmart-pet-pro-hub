@@ -9,7 +9,7 @@
       // When a route is accessed directly (e.g., /about), GitHub returns 404
       // This script redirects to the index page with the route stored in session storage
       // The main app then reads this and navigates to the correct route
-      var pathSegmentsToKeep = 1; // Keep /amcmart-pet-pro-hub as base path
+      var pathSegmentsToKeep = 0; // Root deployment at https://amcdev01.github.io
 
       var l = window.location;
       l.replace(
